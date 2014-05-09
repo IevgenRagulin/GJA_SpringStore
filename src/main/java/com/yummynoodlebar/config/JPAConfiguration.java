@@ -1,6 +1,11 @@
 package com.yummynoodlebar.config;
 
-import com.yummynoodlebar.persistence.repository.OrdersRepository;
+import java.sql.SQLException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,56 +20,56 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-import java.sql.SQLException;
+import com.yummynoodlebar.persistence.repository.CustomersRepository;
+import com.yummynoodlebar.persistence.repository.OrdersRepository;
+import com.yummynoodlebar.persistence.repository.ProductRepository;
 
 // {!begin transactions}
 @Configuration
-@EnableJpaRepositories(basePackages = "com.yummynoodlebar.persistence.repository",
-    includeFilters = @ComponentScan.Filter(value = {OrdersRepository.class}, type = FilterType.ASSIGNABLE_TYPE))
+@EnableJpaRepositories(basePackages = "com.yummynoodlebar.persistence.repository", includeFilters = @ComponentScan.Filter(value = {
+		OrdersRepository.class, CustomersRepository.class,
+		ProductRepository.class }, type = FilterType.ASSIGNABLE_TYPE))
 @EnableTransactionManagement
 public class JPAConfiguration {
-// {!end transactions}
+	// {!end transactions}
 
-  @Bean
-  public DataSource dataSource() throws SQLException {
+	@Bean
+	public DataSource dataSource() throws SQLException {
 
-    EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-    return builder.setType(EmbeddedDatabaseType.H2).build();
-  }
+		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+		return builder.setType(EmbeddedDatabaseType.H2).build();
+	}
 
-  @Bean
-  public EntityManagerFactory entityManagerFactory() throws SQLException {
+	@Bean
+	public EntityManagerFactory entityManagerFactory() throws SQLException {
 
-    HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-    vendorAdapter.setGenerateDdl(true);
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		vendorAdapter.setGenerateDdl(true);
 
-    LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-    factory.setJpaVendorAdapter(vendorAdapter);
-    factory.setPackagesToScan("com.yummynoodlebar.persistence.domain");
-    factory.setDataSource(dataSource());
-    factory.afterPropertiesSet();
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		factory.setJpaVendorAdapter(vendorAdapter);
+		factory.setPackagesToScan("com.yummynoodlebar.persistence.domain");
+		factory.setDataSource(dataSource());
+		factory.afterPropertiesSet();
 
-    return factory.getObject();
-  }
+		return factory.getObject();
+	}
 
-  @Bean
-  public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
-    return entityManagerFactory.createEntityManager();
-  }
+	@Bean
+	public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
+		return entityManagerFactory.createEntityManager();
+	}
 
-  @Bean
-  public PlatformTransactionManager transactionManager() throws SQLException {
+	@Bean
+	public PlatformTransactionManager transactionManager() throws SQLException {
 
-    JpaTransactionManager txManager = new JpaTransactionManager();
-    txManager.setEntityManagerFactory(entityManagerFactory());
-    return txManager;
-  }
+		JpaTransactionManager txManager = new JpaTransactionManager();
+		txManager.setEntityManagerFactory(entityManagerFactory());
+		return txManager;
+	}
 
-  @Bean
-  public HibernateExceptionTranslator hibernateExceptionTranslator() {
-    return new HibernateExceptionTranslator();
-  }
+	@Bean
+	public HibernateExceptionTranslator hibernateExceptionTranslator() {
+		return new HibernateExceptionTranslator();
+	}
 }
