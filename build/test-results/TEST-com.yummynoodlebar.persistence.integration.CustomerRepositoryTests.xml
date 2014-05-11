@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<testsuite name="com.yummynoodlebar.persistence.integration.CustomerRepositoryTests" tests="1" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="x201" time="1.399672504816E9">
+  <properties/>
+  <testcase name="thatItemIsInsertedIntoRepoWorks" classname="com.yummynoodlebar.persistence.integration.CustomerRepositoryTests" time="2.953"/>
+  <system-out><![CDATA[2014-05-09 23:55:02 INFO  GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@35e04d65: startup date [Fri May 09 23:55:02 CEST 2014]; root of context hierarchy
+2014-05-09 23:55:02 INFO  GenericApplicationContext:1374 - Bean 'JPAConfiguration' of type [class com.yummynoodlebar.config.JPAConfiguration$$EnhancerByCGLIB$$8606f289] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2014-05-09 23:55:02 INFO  GenericApplicationContext:1374 - Bean 'hibernateExceptionTranslator' of type [class org.springframework.orm.hibernate4.HibernateExceptionTranslator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2014-05-09 23:55:02 INFO  DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@e41a242: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,JPAConfiguration,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,customersRepository,productRepository,ordersRepository,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration,org.springframework.transaction.config.internalTransactionAdvisor,transactionAttributeSource,transactionInterceptor,menuPersistenceService,entityManager,hibernateExceptionTranslator,transactionManager,entityManagerFactory,dataSource]; root of factory hierarchy
+2014-05-09 23:55:02 INFO  EmbeddedDatabaseFactory:124 - Creating embedded database 'testdb'
+2014-05-09 23:55:02 INFO  LocalContainerEntityManagerFactoryBean:285 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2014-05-09 23:55:03 INFO  Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+2014-05-09 23:55:03 INFO  Version:41 - HHH000412: Hibernate Core {4.0.1.Final}
+2014-05-09 23:55:03 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2014-05-09 23:55:03 INFO  Environment:342 - HHH000021: Bytecode provider name : javassist
+2014-05-09 23:55:03 INFO  Ejb3Configuration:526 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2014-05-09 23:55:03 INFO  ConnectionProviderInitiator:186 - HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2014-05-09 23:55:03 INFO  Dialect:121 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2014-05-09 23:55:03 INFO  TransactionFactoryInitiator:73 - HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+2014-05-09 23:55:03 INFO  ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+2014-05-09 23:55:04 INFO  SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+2014-05-09 23:55:04 INFO  SchemaUpdate:193 - HHH000102: Fetching database metadata
+2014-05-09 23:55:04 INFO  SchemaUpdate:205 - HHH000396: Updating schema
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: CUSTOMERS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: NOODLE_ORDERS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: ORDER_ORDER_ITEMS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: PRODUCTS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: CUSTOMERS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: NOODLE_ORDERS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: ORDER_ORDER_ITEMS
+2014-05-09 23:55:04 INFO  DatabaseMetaData:120 - HHH000262: Table not found: PRODUCTS
+2014-05-09 23:55:04 INFO  SchemaUpdate:240 - HHH000232: Schema update complete
+2014-05-09 23:55:04 INFO  TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@554614db]; rollback [true]
+2014-05-09 23:55:04 INFO  TransactionalTestExecutionListener:299 - Rolled back transaction after test execution for test context [TestContext@7a3d9714 testClass = CustomerRepositoryTests, testInstance = com.yummynoodlebar.persistence.integration.CustomerRepositoryTests@6189e0be, testMethod = thatItemIsInsertedIntoRepoWorks@CustomerRepositoryTests, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@23020bf9 testClass = CustomerRepositoryTests, locations = '{}', classes = '{class com.yummynoodlebar.config.JPAConfiguration}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

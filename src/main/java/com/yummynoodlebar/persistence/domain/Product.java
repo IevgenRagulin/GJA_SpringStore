@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.yummynoodlebar.config.JPAConfiguration;
+
 @Entity(name = "PRODUCTS")
 public class Product {
 
@@ -16,6 +18,9 @@ public class Product {
 	private String productName;
 	@Column(nullable = false)
 	private Double productPrice;
+	private String averageRating;
+	private int deliveryTime = JPAConfiguration.getRandomDeliveryDays();
+	private int inStock = JPAConfiguration.getRandomInStock();
 
 	public Product() {
 		this.id = UUID.randomUUID().toString();
@@ -26,6 +31,7 @@ public class Product {
 	}
 
 	public String getProductName() {
+		System.out.println("GETTING PRODUCT NAME" + productName);
 		return productName;
 	}
 
@@ -37,12 +43,40 @@ public class Product {
 		return id;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public Double getProductPrice() {
 		return productPrice;
 	}
 
 	public void setProductPrice(Double productPrice) {
 		this.productPrice = productPrice;
+	}
+
+	public String getAverageRating() {
+		return averageRating;
+	}
+
+	public void setAverageRating(String averageRating) {
+		this.averageRating = averageRating;
+	}
+
+	public int getDeliveryTime() {
+		return deliveryTime;
+	}
+
+	public void setDeliveryTime(int deliveryTime) {
+		this.deliveryTime = deliveryTime;
+	}
+
+	public int getInStock() {
+		return inStock;
+	}
+
+	public void setInStock(int inStock) {
+		this.inStock = inStock;
 	}
 
 }

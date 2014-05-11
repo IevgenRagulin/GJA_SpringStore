@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<testsuite name="com.yummynoodlebar.persistence.integration.OrderMappingIntegrationTests" tests="1" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="x201" time="1.39967250489E9">
+  <properties/>
+  <testcase name="thatItemCustomMappingWorks" classname="com.yummynoodlebar.persistence.integration.OrderMappingIntegrationTests" time="0.069"/>
+  <system-out><![CDATA[2014-05-09 23:55:04 INFO  TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@554614db]; rollback [true]
+2014-05-09 23:55:04 INFO  TransactionalTestExecutionListener:299 - Rolled back transaction after test execution for test context [TestContext@569e6c65 testClass = OrderMappingIntegrationTests, testInstance = com.yummynoodlebar.persistence.integration.OrderMappingIntegrationTests@3ade8750, testMethod = thatItemCustomMappingWorks@OrderMappingIntegrationTests, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@6785b361 testClass = OrderMappingIntegrationTests, locations = '{}', classes = '{class com.yummynoodlebar.config.JPAConfiguration}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,7 +1,6 @@
 package com.yummynoodlebar.persistence.services;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.yummynoodlebar.events.orders.SetOrderPaymentEvent;
 import com.yummynoodlebar.persistence.domain.Order;
@@ -11,9 +10,7 @@ public interface OrderPersistenceService {
 
 	public List<Order> requestAllOrders();
 
-	public Order requestOrderDetails(UUID requestOrderDetailsEvent);
-
-	public OrderStatus requestOrderStatus(UUID key);
+	public Order requestOrderDetails(String key);
 
 	public void createOrder(Order event);
 
@@ -21,6 +18,6 @@ public interface OrderPersistenceService {
 
 	public void setOrderPayment(SetOrderPaymentEvent setOrderPaymentEvent);
 
-	public void deleteOrder(UUID key);
+	public void deleteOrder(String key);
 
 }

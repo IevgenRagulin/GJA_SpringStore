@@ -1,6 +1,5 @@
 package com.yummynoodlebar.persistence.domain;
 
-
 public class OrderStatus {
 
 	public final static String AWAITING_PAYMENT = "Awaiting payment";

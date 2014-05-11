@@ -2,30 +2,18 @@ package com.yummynoodlebar.persistence.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.yummynoodlebar.events.orders.SetOrderPaymentEvent;
 import com.yummynoodlebar.persistence.domain.Order;
 import com.yummynoodlebar.persistence.domain.OrderStatus;
-import com.yummynoodlebar.persistence.repository.OrderStatusRepository;
 import com.yummynoodlebar.persistence.repository.OrdersRepository;
 
 public class OrderPersistenceEventHandler implements OrderPersistenceService {
 
 	private final OrdersRepository orderRepository;
-	private final OrderStatusRepository orderStatusRepository;
 
-	public OrderPersistenceEventHandler(final OrdersRepository orderRepository,
-			final OrderStatusRepository orderStatusRepository) {
+	public OrderPersistenceEventHandler(final OrdersRepository orderRepository) {
 		this.orderRepository = orderRepository;
-		this.orderStatusRepository = orderStatusRepository;
-	}
-
-	@Override
-	public void setOrderStatus(OrderStatus status) {
-
-		status = orderStatusRepository.save(status);
-
 	}
 
 	@Override
@@ -43,9 +31,9 @@ public class OrderPersistenceEventHandler implements OrderPersistenceService {
 	}
 
 	@Override
-	public Order requestOrderDetails(UUID key) {
+	public Order requestOrderDetails(String key) {
 
-		Order order = orderRepository.findOne(key.toString());
+		Order order = orderRepository.findOne(key);
 
 		return order;
 	}
@@ -55,23 +43,18 @@ public class OrderPersistenceEventHandler implements OrderPersistenceService {
 		Order order = orderRepository.findOne(setOrderPaymentEvent.getKey()
 				.toString());
 		// TODO, handling payment details...
-
 	}
 
 	@Override
-	public void deleteOrder(UUID key) {
-		Order order = orderRepository.findOne(key.toString());
+	public void deleteOrder(String key) {
+		Order order = orderRepository.findOne(key);
 		orderRepository.delete(key.toString());
 	}
 
 	@Override
-	public OrderStatus requestOrderStatus(UUID key) {
-		OrderStatus status = orderStatusRepository.findLatestById(key);
+	public void setOrderStatus(OrderStatus status) {
+		// TODO Auto-generated method stub
 
-		if (status == null) {
-			return null;
-		}
-
-		return status;
 	}
+
 }

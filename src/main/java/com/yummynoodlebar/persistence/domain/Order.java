@@ -52,6 +52,10 @@ public class Order {
 		return customer;
 	}
 
+	public String getCustomerName() {
+		return customer.getName();
+	}
+
 	public Order() {
 		this.id = UUID.randomUUID().toString();
 		this.dateTimeOfSubmission = new Date();
@@ -63,6 +67,10 @@ public class Order {
 		this.orderItems = orderItems;
 		this.dateTimeOfSubmission = new Date();
 		this.id = key;
+	}
+
+	public Order(Customer customer, Map<Product, Integer> orderItems) {
+		this(customer, orderItems, UUID.randomUUID().toString());
 	}
 
 	public void setDateTimeOfSubmission(Date dateTimeOfSubmission) {
@@ -95,6 +103,14 @@ public class Order {
 
 	public Map<Product, Integer> getOrderItems() {
 		return orderItems;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 
 }

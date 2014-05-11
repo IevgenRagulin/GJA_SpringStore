@@ -1,29 +1,50 @@
 package com.yummynoodlebar.persistence.domain;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "CUSTOMERS")
-public class Customer {
+public class Customer implements Serializable {
+	private static final long serialVersionUID = -1296927540765837398L;
 
+	@NotNull
+	@NotEmpty
 	@Column(nullable = false)
 	private String name;
 
-	private String streetAdress;
+	@NotNull
+	@NotEmpty
+	private String streetAddress;
 
+	@NotNull
+	@NotEmpty
 	private String city;
 
+	@NotNull
+	@NotEmpty
 	private String postalCode;
 
+	@NotNull
+	@NotEmpty
+	@Email
 	@Column(nullable = false)
 	private String email;
 
 	@Id
 	@Column(name = "CUSTOMER_ID")
 	private String id;
+
+	@NotNull
+	@NotEmpty
+	private String paymentMethod;
 
 	public Customer() {
 		this.id = UUID.randomUUID().toString();
@@ -49,12 +70,12 @@ public class Customer {
 		this.city = city;
 	}
 
-	public String getStreetAdress() {
-		return streetAdress;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setStreetAdress(String streetAdress) {
-		this.streetAdress = streetAdress;
+	public void setStreetAddress(String streetAdress) {
+		this.streetAddress = streetAdress;
 	}
 
 	public String getName() {
@@ -76,4 +97,13 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
 }

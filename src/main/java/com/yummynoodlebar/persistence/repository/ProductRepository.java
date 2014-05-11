@@ -7,6 +7,5 @@ import com.yummynoodlebar.persistence.domain.Product;
 
 public interface ProductRepository extends CrudRepository<Product, String> {
 	Product findById(String key);
-	// {!end top}
 
 }
