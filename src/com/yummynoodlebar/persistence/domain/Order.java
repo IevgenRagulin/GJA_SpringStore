@@ -2,7 +2,9 @@ package com.yummynoodlebar.persistence.domain;
 
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -116,6 +118,18 @@ public class Order {
 
 	public Map<Product, Integer> getOrderItems() {
 		return orderItems;
+	}
+
+	public String getTotalPrice() {
+		Map<Product, Integer> orderItems = getOrderItems();
+		Iterator<Entry<Product, Integer>> it = orderItems.entrySet().iterator();
+		Double sum = 0.0;
+		while (it.hasNext()) {
+			Map.Entry<Product, Integer> pairs = (Map.Entry<Product, Integer>) it
+					.next();
+			sum = sum + (pairs.getKey().getProductPrice() * pairs.getValue());
+		}
+		return sum.toString();
 	}
 
 	public String getPaymentMethod() {

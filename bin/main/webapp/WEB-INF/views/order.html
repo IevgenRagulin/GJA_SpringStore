@@ -49,7 +49,110 @@
 
             <p class="text-info">Your order number is <span th:text="${order.id}"></span></p>
 		    <p class="text-success">The status is currently: <span th:text="${order.status}"></span></p>
+			<table style="border-style: solid; width: 500px">
 
+			<tr>
+				<td>
+				Invoice
+				</td>
+				<td></td>
+				<td>
+				number: 20110001
+				</td>
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+			<tr>
+				<td>
+				Supplier
+				</td>
+				<td></td>
+				<td>
+				Purchaser
+				</td>
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			<tr>
+				<td>
+				Ievgen Ragulin
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td th:text="${order.customer.name}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Hroznova 43
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td th:text="${order.customer.streetAddress}">
+				</td>
+			</tr>
+			<tr>
+				<p th:text="${order.customer.name}"></p>
+			</tr>
+			</table>
+			<table style="border-style: solid; width: 500px">
+			<tr>
+			<td><b>Payment conditions</b></td>
+			</tr>
+			<tr>
+			<td>Payment method: </td>
+			<td th:text="${order.customer.paymentMethod}">
+				</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+			<td>Bank: </td>
+			<td>Komercni banka</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Bank account: </td>
+			<td>0800/123123123</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Variable symbol: </td>
+			<td>20110001</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Date of issue: </td>
+			<td><script type="text/javascript">
+				var currentDate = new Date()
+				var day = currentDate.getDate()
+				var month = currentDate.getMonth() + 1
+				var year = currentDate.getFullYear()
+				document.write(day + "/" + month + "/" + year)
+				</script></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Valid till: </td>
+			<td><script type="text/javascript">
+				var today = new Date();
+				var tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000*14));
+				var day = tomorrow.getDate()
+				var month = tomorrow.getMonth() + 1
+				var year = tomorrow.getFullYear()
+				document.write(day + "/" + month + "/" + year)
+				</script></td>
+			<td></td>
+			</tr>
+			</table>
+			<table style="width:500px; border-style:solid">
+			<tr>
+				<td>
+				Price
+				</td>
+				<td>
+				1000 CZK
+				</td>
+				<td>
+				</td>
+			</tr>
+			</table>
         </div>
     </div>
     <div th:include="layout :: foot"></div>

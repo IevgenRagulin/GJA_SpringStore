@@ -25,7 +25,13 @@ buildscript {
 }
 
 
-repositories { mavenCentral() }
+repositories { 
+
+mavenCentral()
+
+maven { 
+url 'http://repo.spring.io/milestone/'}
+ }
 
 dependencies {
 	def tomcatVersion = '7.0.53'

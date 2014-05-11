@@ -32,7 +32,6 @@ public class SiteController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCurrentProducts(Model model) {
-		System.out.println("List of products to home view");
 		if (!productsInited) {
 			productsInited = true;
 			Product product = new Product("1");
