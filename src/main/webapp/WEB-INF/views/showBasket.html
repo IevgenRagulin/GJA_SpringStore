@@ -62,6 +62,7 @@
                         <td th:text="${basketItem.productName}"></td>
                         <td th:text="${basketItem.productPrice}"></td>
                         <td th:text="${basket.getNumberOfItemsForProduct(__${basketItem.id}__)}"></td>
+                        
                         <td>
                             <form id="${itemFormId}" action="/removeFromBasket" method="POST">
                                 <input id="id" name="id" type="hidden" th:value="${basketItem.id}" />

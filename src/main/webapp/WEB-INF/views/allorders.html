@@ -32,8 +32,60 @@ body {
 <body>
 	<div th:include="layout :: head"></div>
 	<div class="container-fluid">
-	All orders page
-	
+		All orders page
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Customer name</th>
+					<th>Customer email</th>
+					<th>Customer address</th>
+					<th>Total price</th>
+					<th>Payment method</th>
+					<th>Current status</th>
+					<th>Set status to "Awaiting payment"</th>
+					<th>Set status to "Being delivered"</th>
+					<th>Set status to "Delivered"</th>
+					<th>Set status to "Other"</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="item : ${orderItems}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.customer.name}"></td>
+					<td th:text="${item.customer.email}"></td>
+					<td th:text="${item.customer.address}"></td>
+					<td th:text="${item.totalPrice}"></td>
+					<td th:text="${item.paymentMethod}"></td>
+					<td th:text="${item.status}"></td>
+					<td>
+                        <form action="/setOrderStatusAwaitingPayment" method="POST">
+                            <input id="id" name="id" type="hidden" th:value="${item.id}"/>
+                            <input type="submit" value="Awaiting payment"/>
+                        </form>
+                    </td>
+					<td>
+                        <form action="/setOrderStatusBeingDelivered" method="POST">
+                            <input id="id" name="id" type="hidden" th:value="${item.id}"/>
+                            <input type="submit" value="Being delivered"/>
+                        </form>
+                    </td>
+					<td>
+                        <form action="/setOrderStatusDelivered" method="POST">
+                            <input id="id" name="id" type="hidden" th:value="${item.id}"/>
+                            <input type="submit" value="Delivered"/>
+                        </form>
+                    </td>
+					<td>
+                        <form action="/setOrderStatusOther" method="POST">
+                            <input id="id" name="id" type="hidden" th:value="${item.id}"/>
+                            <input type="submit" value="Other"/>
+                        </form>
+                    </td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div th:include="layout :: foot"></div>
 </body>

@@ -32,8 +32,49 @@ body {
 <body>
 	<div th:include="layout :: head"></div>
 	<div class="container-fluid">
-	All products page
-	
+		All products page. Add a new product.
+		<form action="/addNewProduct" method="POST"
+			th:object="${newProductInfo}">
+			<table>
+				<tr>
+					<td>Product name:</td>
+					<td><input type="text" th:field="*{productName}" /></td>
+					<td th:if="${#fields.hasErrors('productName')}"><p
+							th:errors="*{productName}">Incorrect product name</p></td>
+				</tr>
+				<tr>
+					<td>Product price:</td>
+					<td><input type="text" th:field="*{productPrice}" /></td>
+					<td th:if="${#fields.hasErrors('productPrice')}"><p
+							th:errors="*{productPrice}">Incorrect product price</p></td>
+				</tr>
+				<tr>
+					<td>Number of items in stock:</td>
+					<td><input type="text" th:field="*{inStock}" /></td>
+					<td th:if="${#fields.hasErrors('inStock')}"><p
+							th:errors="*{inStock}">Incorrect product price</p></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="submit"
+						value="Create a new product" /></td>
+				</tr>
+			</table>
+		</form>
+		Update existing products
+		<div th:each="item: ${productItems}">
+			<form action="/modifyProduct" method="POST">
+				Product id:<br /> <input id="id" name="id" type="text"
+				    th:value="${item.id}" readonly="true" /><br />
+				Product name:<br /> <input id="name" name="productName" type="text"
+					th:value="${item.productName}" /><br />
+				Product price:<br /> <input id="price" name="productPrice"
+					type="text" 
+					th:value="${item.productPrice}" /><br /> How many are in stock:<br />
+				<input id="inStock" name="inStock" type="text"
+					th:value="${item.inStock}"/> <br />
+				<input type="submit" value="Update product" />
+			</form>
+		</div>
 	</div>
 	<div th:include="layout :: foot"></div>
 </body>
